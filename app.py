@@ -1,25 +1,34 @@
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 from werkzeug import exceptions
-from flask_mail import Mail, Message
+# from flask_mail import Mail, Message
 
 app = Flask(__name__)
 CORS(app)
-mail = Mail(app)
 
-app.config['MAIL_SERVER']='smtp.gmail.com'
-app.config['MAIL_PORT'] = 465
-app.config['MAIL_USERNAME'] = 'yourId@gmail.com'
-app.config['MAIL_PASSWORD'] = '*****'
-app.config['MAIL_USE_TLS'] = False
-app.config['MAIL_USE_SSL'] = True
+# app.config['DEBUG'] = True
+# app.config['TESTING'] = False
+# app.config['MAIL_SERVER']='smtp.husmail.com'
+# app.config['MAIL_PORT'] = 587
+# app.config['MAIL_USERNAME'] = 'anisha@prettyprinted.com'
+# app.config['MAIL_PASSWORD'] = ''
+# app.config['MAIL_USE_TLS'] = True
+# app.config['MAIL_USE_SSL'] = False
+# # app.config['MAIL_DEBUG'] = True
+# app.config['AIL_DEFAULT_SENDER'] = 'anisha@prettyprinted.com'
+# app.config['MAIL_MAX_EMAILS'] = 5
+# # app.config['MAIL_SUPPRESS_SEND'] = False
+# app.config['MAIL_ASCI_ATTACHMENTS'] = False
+# mail = Mail(app)
 
-@app.route("/")
-def index():
-    msg = Message('Hello', sender = 'yourId@gmail.com', recipients = ['someone1@gmail.com'])
-    msg.body = "This is the email body"
-    mail.send(msg)
-    return "Sent"
+
+
+# @app.route('/')
+# def index():
+#     msg = Message('Hello', recipients = ['jeyew26081@eoscast.com'])
+#     mail.send(msg)
+
+#     return 'Message has been sent'
 
 @app.route('/')
 def home():
@@ -49,4 +58,4 @@ def handle_server_error(err):
     return jsonify({"message": f"{err}. It's not you, it's us. Press F to pay respects"}), 500
 
 if __name__ == '__main__':
-    app.run(debug=True)
+    app.run()
